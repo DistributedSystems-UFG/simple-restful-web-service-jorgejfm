@@ -8,6 +8,11 @@ def serviceTester():
     api_url = api_base_url 
     response = requests.get(api_url)
     print (response.json())
+	
+	# getAvaregeSalaryEmployees endpoint
+    api_url = api_base_url 
+    response = requests.get(api_url)
+    print ("Média : " + str(resultado))
 
     # Test get_an_employee endpoint
     api_url = api_base_url + '/201'

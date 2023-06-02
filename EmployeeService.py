@@ -28,6 +28,17 @@ empDB=[
 @app.route('/empdb/employee',methods=['GET'])
 def getAllEmp():
     return jsonify({'emps':empDB})
+	
+@app.route('/empdb/employee',methods=['GET'])
+def getAverageSalaryEmp():
+    avg = 0
+	contador = 0
+	resultado = 0
+    [ emp for emp in empDB ]
+	    avg = avg + emp[salary] 
+		contador = contador + 1
+        resultado = avg / contador		
+    return resultado
 
 @app.route('/empdb/employee/<empId>',methods=['GET'])
 def getEmp(empId):
@@ -39,13 +50,15 @@ def getEmp(empId):
 def updateEmp(empId):
 
     em = [ emp for emp in empDB if (emp['id'] == empId) ]
-
+ 
     if len(em) > 0:
         if 'name' in request.json : 
             em[0]['name'] = request.json['name']
 
         if 'title' in request.json:
             em[0]['title'] = request.json['title']
+    else
+	    em[0][title] = "Funcionário não existe"
 
     return jsonify(em)
 
